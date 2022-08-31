@@ -1,32 +1,43 @@
-import 'package:e_commerece/models/category_model.dart';
+import 'package:e_commerece/models/product_model.dart';
 import 'package:equatable/equatable.dart';
 
-class Product extends Equatable {
-  final String? name;
-  final String? category;
-  final String? imageUrl;
-  final double? price;
-  final bool? isRecommend;
-  final bool? isPopular;
+class Cart extends Equatable {
+  Cart();
+  double get subTotal =>
+      products.fold(0, (total, current) => total + current.price!);
 
-  const Product(
-      {this.name,
-      this.category,
-      this.imageUrl,
-      this.price,
-      this.isRecommend,
-      this.isPopular});
+  double deliveryFee(subTotal) {
+    if (subTotal > 30.00) {
+      return 0.0;
+    } else {
+      return 30.00;
+    }
+  }
 
-  @override
-  List<Object?> get props =>
-      [name, category, imageUrl, price, isPopular, isRecommend];
-  static List<Product> products = const [
+  double total(subTotal, deliveryFee) {
+    return subTotal + deliveryFee(subTotal);
+  }
+
+  String freeDelivery(subTotal) {
+    if (subTotal >= 30.0) {
+      return ' You can Free Delivery';
+    } else {
+      double missing = 30.0 - subTotal;
+      return 'Add ${missing.toStringAsFixed(2)}  for FREE Delivery';
+    }
+  }
+
+  String get subTotalstring => subTotal.toStringAsFixed(2);
+  String get totalString => total(subTotal, deliveryFee).toStringAsFixed(2);
+  String get deliveryFeeString => deliveryFee(subTotal).toStringAsFixed(2);
+  String get freeDeliverystring => freeDelivery(subTotal);
+  List<Product> products = const [
     Product(
         name: 'Smoothies',
         category: 'Smoothies',
         imageUrl:
             'https://myfoodbook.com.au/sites/default/files/collections_image/Smoothie_recipes.jpg',
-        price: 39.000,
+        price: 39.99,
         isRecommend: true,
         isPopular: false),
     Product(
@@ -34,7 +45,7 @@ class Product extends Equatable {
         category: 'Smoothies',
         imageUrl:
             'https://giadungthongminhvn.com/Systems/2021/06/16/7-cong-thuc-smoothies-cho-nguoi-bi-tao-bon.png',
-        price: 19.000,
+        price: 19.00,
         isRecommend: false,
         isPopular: true),
     Product(
@@ -42,7 +53,7 @@ class Product extends Equatable {
         category: 'Smoothies',
         imageUrl:
             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS54BKe2Ah6Y7nGIpJq7-k8bKzKVPYBv0eJz64NLI1dBhO21RQBBYDS2PEOTSeyWNU4GaQ&usqp=CAU',
-        price: 31.000,
+        price: 31.99,
         isRecommend: true,
         isPopular: false),
     Product(
@@ -50,7 +61,7 @@ class Product extends Equatable {
         category: 'Smoothies',
         imageUrl:
             'https://lifemadesweeter.com/wp-content/uploads/5-Healthy-Smoothies-Easy-Breakfast-Fruit-Smoothie-Recipes-Photo-Picture.jpg',
-        price: 49.000,
+        price: 49.99,
         isRecommend: true,
         isPopular: true),
     Product(
@@ -94,4 +105,7 @@ class Product extends Equatable {
         isRecommend: false,
         isPopular: true),
   ];
+
+  @override
+  List<Object?> get props => [];
 }

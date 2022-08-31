@@ -1,12 +1,15 @@
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:e_commerece/models/category_model.dart';
+import 'package:e_commerece/models/product_model.dart';
 import 'package:e_commerece/widgets/custom_navigator.dart';
 import 'package:e_commerece/widgets/hero_carousel.dart';
+import 'package:e_commerece/widgets/product_card.dart';
 import 'package:e_commerece/widgets/section_title.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/custom_appbar.dart';
+import '../../widgets/product_carousel.dart';
 
 class HomeScreen extends StatelessWidget {
   static const String routeName = '/';
@@ -21,7 +24,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: 'Zero To Unicorn',
+        title: 'Hana\'s Coffee',
       ),
       bottomNavigationBar: CustomNavi(),
       body: Column(
@@ -41,7 +44,17 @@ class HomeScreen extends StatelessWidget {
           )),
           SectionTitle(
             title: 'RECOMMEND',
-          )
+          ),
+          ProductCarousel(
+              products: Product.products
+                  .where((e) => e.isRecommend == true)
+                  .toList()),
+          SectionTitle(
+            title: 'MOST POPULAR',
+          ),
+          ProductCarousel(
+              products:
+                  Product.products.where((e) => e.isPopular == true).toList()),
         ],
       ),
     );
