@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "611684726544",
+    "project_id": "e-commere-18ac3",
+    "storage_bucket": "e-commere-18ac3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:611684726544:android:02ee948845cc5620149795",
+        "android_client_info": {
+          "package_name": "com.example.e_commerece"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "611684726544-1job48trp1lrsh5e4hcfs0ilcjq82p1i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjgA-6HtToZ1KNFdVkj49eQqvzDlikftM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "611684726544-1job48trp1lrsh5e4hcfs0ilcjq82p1i.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "611684726544-32avkefnmp6bflooiqkpg41lfraecjfd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.eCommerece"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
